@@ -1,0 +1,42 @@
+<div class="container">
+  <h1>Quản lý danh mục sản phẩm</h1>
+  <form action="">
+    <div class="form-group">
+      <label for="">Mã SP:</label>
+      <input type="text" class="form-control" placeholder="Mã sản phẩm" #maSP>
+    </div>
+    <div class="form-group">
+      <label for="">Tên SP:</label>
+      <input type="text" class="form-control" placeholder="Tên sản phẩm" #tenSP>
+    </div>
+    <div class="form-group">
+        <label for="">Giá:</label>
+        <input type="text" class="form-control" placeholder="1000000" #gia>
+      </div>
+    <button type="button" class="btn btn-primary" (click)="themSanPham(maSP.value,tenSP.value,gia.value)">Thêm sản phẩm</button>
+  </form> 
+<div class="container">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã SP</th>
+          <th>Tên Sp</th>
+          <th>Giá</th>
+          <td>Cập nhật</td>
+        </tr>
+      </thead>
+      <tbody >
+        <ng-container *ngIf="mangDanhMucSP != null" >
+          <tr  *ngFor="let item of mangDanhMucSP; let STT = index"  [ngClass]="{mau:STT%2 === 0}">
+            <td>{{STT+1}}</td>
+            <td>{{item.maSP}}</td>
+            <td>{{item.tenSP}}</td>
+            <td>{{item.gia}}</td>
+            <td><button type="button" class="btn btn-danger" (click)="xoaSanPham(maSP.value)">Xóa</button></td>
+          </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
